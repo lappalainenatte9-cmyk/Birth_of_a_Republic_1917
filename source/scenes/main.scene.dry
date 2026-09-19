@@ -10,12 +10,13 @@ if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
 }
 !}
-max-cards: 3
+max-cards: 4
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
 [? if year = 1917 and month = 12 : Finland has declared independence. The future of the new nation remains uncertain. ?]
 
+- @finland_parliament
 - @party
 - @govt
 - #advisor
@@ -33,17 +34,40 @@ if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
 }
 !}
-max-cards: 4
+max-cards: 5
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
 [? if year = 1917 and month = 12 : Finland has declared independence. The future of the new nation remains uncertain. ?]
 
+- @finland_parliament
 - @party
 - @govt
 - #advisor
 - @shuffle_leadership_pinned
 
+
+@finland_parliament
+title: Finnish Parliament (1917)
+is-card: true
+new-page: true
+
+= Finnish Parliament - October 1917 election
+
+The Parliament of Finland has 200 seats. A majority requires 101 seats.
+
+- Social Democratic Party (SDP): 92 seats
+- Agrarian League (Maalaisliitto): 26 seats
+- Young Finnish Party (Nuorsuomalainen puolue): 24 seats
+- People's Party (Kansanpuolue): 5 seats
+- Finnish Party (Suomalainen puolue): 32 seats
+- Swedish People's Party (RKP): 21 seats
+
+The SDP holds 92 of 200 seats and does not have an outright majority. The other parties hold a combined 108 seats.
+
+These figures represent the historical October 1917 election. This page is an initial reference view: game decisions do not yet change the seat totals.
+
+- @main: Return to main screen
 
 @party
 title: Party Affairs
