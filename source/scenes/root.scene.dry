@@ -630,4 +630,44 @@ go-to: 1928_main
 @1928_main
 audio: shuffle music/1928_1930/FruhlingsliedMendelssohn.mp3 music/1928_1930/AUF_HOHEN_BERGEN_noise_reduced.mp3 music/1928_1930/MarekWeber.mp3 music/1928_1930/BAUERNKAPELLE.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/ZurSonne_zurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg music/1928_1930/LiedDerPompadour.mp3 music/1928_1933/SozialistenMarsch.mp3
 new-page: true
-go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
+go-to: 1917_first_decision
+
+ 
+@1917_first_decision
+new-page: true
+
+= Finland at a Crossroads
+
+December 1917. Finland has declared independence, but the political future of the country remains uncertain.
+
+As the leadership of the Social Democratic Party, you must decide what your party should prioritize in the coming months.
+
+What will be your first priority?
+
+- @1917_parliament: Seek cooperation in Parliament.
+- @1917_workers: Focus on workers' living conditions.
+- @1917_organization: Strengthen the party's organization.
+
+@1917_parliament
+on-arrival: finland_strategy = 1
+
+You have decided to prioritize parliamentary negotiations and seek cooperation with other political parties.
+
+- @1917_continue: Continue
+
+@1917_workers
+on-arrival: finland_strategy = 2
+
+You have decided to prioritize workers' living conditions and social reforms.
+
+- @1917_continue: Continue
+
+@1917_organization
+on-arrival: finland_strategy = 3
+
+You have decided to strengthen the party's organization and expand its activities.
+
+- @1917_continue: Continue
+
+@1917_continue
+go-to: main
