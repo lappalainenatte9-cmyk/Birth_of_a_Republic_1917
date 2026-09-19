@@ -92,19 +92,19 @@ Q.finland_parliament_seen = 1;
 
 The Parliament of Finland has 200 seats. A majority requires 101 seats.
 
-Social Democratic Party (SDP) — [+ spd_r * 2 +] seats.
+Social Democratic Party (SDP) — 92 seats.
 
-Agrarian League (Maalaisliitto) — [+ z_r * 2 +] seats.
+Agrarian League (Maalaisliitto) — 26 seats.
 
-Young Finnish Party (Nuorsuomalainen puolue) — [+ ddp_r * 2 +] seats.
+Young Finnish Party (Nuorsuomalainen puolue) — 24 seats.
 
-People's Party (Kansanpuolue) — [+ dvp_r * 2 +] seats.
+People's Party (Kansanpuolue) — 5 seats.
 
-Finnish Party (Suomalainen puolue) — [+ dnvp_r * 2 +] seats.
+Finnish Party (Suomalainen puolue) — 32 seats.
 
-Swedish People's Party (RKP) — [+ other_r * 2 +] seats.
+Swedish People's Party (RKP) — 21 seats.
 
-The starting seat distribution is now stored in the original game's parliamentary state. The German party-support model, future elections, and events still need to be adapted for Finland.
+These are the October 1917 starting seats. They are now also stored in the original game's parliamentary state. Its party-support model, future elections, and German events still need to be adapted for Finland.
 
 - @main: Return to main screen
 
