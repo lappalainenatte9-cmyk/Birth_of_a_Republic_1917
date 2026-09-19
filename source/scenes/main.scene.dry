@@ -59,27 +59,52 @@ title: Finnish Parliament (1917)
 is-card: true
 card-image: img/reichstag_2.jpg
 new-page: true
-on-arrival: finland_parliament_seen = 1
+on-arrival: {!
+// Temporary compatibility mapping: preserve the original game's parliamentary
+// seat-share variables until its elections, events, and party UI are ported.
+// spd = SDP; z = Agrarian League; ddp = Young Finnish Party;
+// dvp = People's Party; dnvp = Finnish Party; other = Swedish People's Party.
+// The German KPD and NSDAP slots have no Finnish 1917 counterpart.
+// Seat variables are percentages of the chamber, NOT numbers of seats.
+if (Q.finland_1917_initialized !== 1) {
+    Q.spd_r = 46;
+    Q.kpd_r = 0;
+    Q.z_r = 13;
+    Q.ddp_r = 12;
+    Q.dvp_r = 2.5;
+    Q.dnvp_r = 16;
+    Q.nsdap_r = 0;
+    Q.other_r = 10.5;
+    Q.old_spd_r = Q.spd_r;
+    Q.old_kpd_r = Q.kpd_r;
+    Q.old_z_r = Q.z_r;
+    Q.old_ddp_r = Q.ddp_r;
+    Q.old_dvp_r = Q.dvp_r;
+    Q.old_dnvp_r = Q.dnvp_r;
+    Q.old_nsdap_r = Q.nsdap_r;
+    Q.old_other_r = Q.other_r;
+    Q.finland_1917_initialized = 1;
+}
+Q.finland_parliament_seen = 1;
+!}
 
 = Finnish Parliament - October 1917 election
 
 The Parliament of Finland has 200 seats. A majority requires 101 seats.
 
-Social Democratic Party (SDP) — 92 seats.
+Social Democratic Party (SDP) — [+ spd_r * 2 +] seats.
 
-Agrarian League (Maalaisliitto) — 26 seats.
+Agrarian League (Maalaisliitto) — [+ z_r * 2 +] seats.
 
-Young Finnish Party (Nuorsuomalainen puolue) — 24 seats.
+Young Finnish Party (Nuorsuomalainen puolue) — [+ ddp_r * 2 +] seats.
 
-People's Party (Kansanpuolue) — 5 seats.
+People's Party (Kansanpuolue) — [+ dvp_r * 2 +] seats.
 
-Finnish Party (Suomalainen puolue) — 32 seats.
+Finnish Party (Suomalainen puolue) — [+ dnvp_r * 2 +] seats.
 
-Swedish People's Party (RKP) — 21 seats.
+Swedish People's Party (RKP) — [+ other_r * 2 +] seats.
 
-The SDP holds 92 of 200 seats and does not have an outright majority. The other parties hold a combined 108 seats.
-
-These figures represent the historical October 1917 election. This page is an initial reference view: game decisions do not yet change the seat totals.
+The starting seat distribution is now stored in the original game's parliamentary state. The German party-support model, future elections, and events still need to be adapted for Finland.
 
 - @main: Return to main screen
 
