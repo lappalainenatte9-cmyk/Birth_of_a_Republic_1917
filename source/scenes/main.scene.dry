@@ -2,6 +2,9 @@ title: Next month
 set-bg: img/map_2.jpg
 is-hand: true
 on-arrival: {!
+if (Q.finland_parliament_seen === undefined) {
+    Q.finland_parliament_seen = 0;
+}
 if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - an action is available.';
 } else if (Q.advisor_action_timer == 1) {
@@ -10,7 +13,8 @@ if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
 }
 !}
-max-cards: 4
+go-to: finland_parliament if finland_parliament_seen = 0
+max-cards: 8
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
@@ -26,6 +30,9 @@ max-cards: 4
 set-bg: img/map_2.jpg
 is-hand: true
 on-arrival: {!
+if (Q.finland_parliament_seen === undefined) {
+    Q.finland_parliament_seen = 0;
+}
 if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - an action is available.';
 } else if (Q.advisor_action_timer == 1) {
@@ -34,7 +41,8 @@ if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
 }
 !}
-max-cards: 5
+go-to: finland_parliament if finland_parliament_seen = 0
+max-cards: 8
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
@@ -49,7 +57,9 @@ max-cards: 5
 @finland_parliament
 title: Finnish Parliament (1917)
 is-card: true
+card-image: img/reichstag_2.jpg
 new-page: true
+on-arrival: finland_parliament_seen = 1
 
 = Finnish Parliament - October 1917 election
 
