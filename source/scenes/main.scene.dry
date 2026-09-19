@@ -2,70 +2,9 @@ title: Next month
 set-bg: img/map_2.jpg
 is-hand: true
 on-arrival: {!
-if (Q.finland_parliament_seen === undefined) {
-    Q.finland_parliament_seen = 0;
-}
-if (Q.advisor_action_timer <= 0) {
-    Q.pinnedCardsDescription = 'Advisors - an action is available.';
-} else if (Q.advisor_action_timer == 1) {
-    Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
-} else {
-    Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
-}
-!}
-go-to: finland_parliament if finland_parliament_seen = 0
-max-cards: 8
-
-#Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
-
-[? if year = 1917 and month = 12 : Finland has declared independence. The future of the new nation remains uncertain. ?]
-
-- @finland_parliament
-- @party
-- @govt
-- #advisor
-- @shuffle_leadership_pinned
-
-@main_easy
-set-bg: img/map_2.jpg
-is-hand: true
-on-arrival: {!
-if (Q.finland_parliament_seen === undefined) {
-    Q.finland_parliament_seen = 0;
-}
-if (Q.advisor_action_timer <= 0) {
-    Q.pinnedCardsDescription = 'Advisors - an action is available.';
-} else if (Q.advisor_action_timer == 1) {
-    Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
-} else {
-    Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
-}
-!}
-go-to: finland_parliament if finland_parliament_seen = 0
-max-cards: 8
-
-#Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
-
-[? if year = 1917 and month = 12 : Finland has declared independence. The future of the new nation remains uncertain. ?]
-
-- @finland_parliament
-- @party
-- @govt
-- #advisor
-- @shuffle_leadership_pinned
-
-@finland_parliament
-title: Finnish Parliament (1917)
-is-card: true
-card-image: img/reichstag_2.jpg
-new-page: true
-on-arrival: {!
-// Temporary compatibility mapping: preserve the original game's parliamentary
-// seat-share variables until its elections, events, and party UI are ported.
-// spd = SDP; z = Agrarian League; ddp = Young Finnish Party;
-// dvp = People's Party; dnvp = Finnish Party; other = Swedish People's Party.
-// The German KPD and NSDAP slots have no Finnish 1917 counterpart.
-// Seat variables are percentages of the chamber, NOT numbers of seats.
+// Initialize the October 1917 parliamentary composition as soon as the game
+// reaches its original main hand, rather than requiring a visit to a card.
+// The inherited game stores seat shares as percentages of the chamber.
 if (Q.finland_1917_initialized !== 1) {
     Q.spd_r = 46;
     Q.kpd_r = 0;
@@ -85,26 +24,105 @@ if (Q.finland_1917_initialized !== 1) {
     Q.old_other_r = Q.other_r;
     Q.finland_1917_initialized = 1;
 }
-Q.finland_parliament_seen = 1;
+if (Q.advisor_action_timer <= 0) {
+    Q.pinnedCardsDescription = 'Advisors - an action is available.';
+} else if (Q.advisor_action_timer == 1) {
+    Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
+} else {
+    Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
+}
+!}
+max-cards: 8
+
+#Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
+
+[? if year = 1917 and month = 12 : Finland has declared independence. The future of the new nation remains uncertain. ?]
+
+- @finland_parliament
+- @party
+- @govt
+- #advisor
+- @shuffle_leadership_pinned
+
+@main_easy
+set-bg: img/map_2.jpg
+is-hand: true
+on-arrival: {!
+if (Q.finland_1917_initialized !== 1) {
+    Q.spd_r = 46;
+    Q.kpd_r = 0;
+    Q.z_r = 13;
+    Q.ddp_r = 12;
+    Q.dvp_r = 2.5;
+    Q.dnvp_r = 16;
+    Q.nsdap_r = 0;
+    Q.other_r = 10.5;
+    Q.old_spd_r = Q.spd_r;
+    Q.old_kpd_r = Q.kpd_r;
+    Q.old_z_r = Q.z_r;
+    Q.old_ddp_r = Q.ddp_r;
+    Q.old_dvp_r = Q.dvp_r;
+    Q.old_dnvp_r = Q.dnvp_r;
+    Q.old_nsdap_r = Q.nsdap_r;
+    Q.old_other_r = Q.other_r;
+    Q.finland_1917_initialized = 1;
+}
+if (Q.advisor_action_timer <= 0) {
+    Q.pinnedCardsDescription = 'Advisors - an action is available.';
+} else if (Q.advisor_action_timer == 1) {
+    Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
+} else {
+    Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
+}
+!}
+max-cards: 8
+
+#Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
+
+[? if year = 1917 and month = 12 : Finland has declared independence. The future of the new nation remains uncertain. ?]
+
+- @finland_parliament
+- @party
+- @govt
+- #advisor
+- @shuffle_leadership_pinned
+
+@finland_parliament
+title: Finnish Parliament (1917)
+is-card: true
+view-if: year = 1917
+card-image: img/reichstag_2.jpg
+new-page: true
+on-arrival: {!
+// These figures read the original game state rather than a fixed text list.
+// Temporary ID mapping for the 1917 starting distribution only:
+// spd = SDP; z = Agrarian League; ddp = Young Finnish Party;
+// dvp = People's Party; dnvp = Finnish Party; other = RKP.
+Q.finland_sdp_seats = Math.round(Q.spd_r * 2);
+Q.finland_agrarian_seats = Math.round(Q.z_r * 2);
+Q.finland_young_finnish_seats = Math.round(Q.ddp_r * 2);
+Q.finland_peoples_seats = Math.round(Q.dvp_r * 2);
+Q.finland_finnish_seats = Math.round(Q.dnvp_r * 2);
+Q.finland_spp_seats = Math.round(Q.other_r * 2);
 !}
 
 = Finnish Parliament - October 1917 election
 
 The Parliament of Finland has 200 seats. A majority requires 101 seats.
 
-Social Democratic Party (SDP) — 92 seats.
+Social Democratic Party (SDP) — [+ finland_sdp_seats +] seats.
 
-Agrarian League (Maalaisliitto) — 26 seats.
+Agrarian League (Maalaisliitto) — [+ finland_agrarian_seats +] seats.
 
-Young Finnish Party (Nuorsuomalainen puolue) — 24 seats.
+Young Finnish Party (Nuorsuomalainen puolue) — [+ finland_young_finnish_seats +] seats.
 
-People's Party (Kansanpuolue) — 5 seats.
+People's Party (Kansanpuolue) — [+ finland_peoples_seats +] seats.
 
-Finnish Party (Suomalainen puolue) — 32 seats.
+Finnish Party (Suomalainen puolue) — [+ finland_finnish_seats +] seats.
 
-Swedish People's Party (RKP) — 21 seats.
+Swedish People's Party (RKP) — [+ finland_spp_seats +] seats.
 
-These are the October 1917 starting seats. They are now also stored in the original game's parliamentary state. Its party-support model, future elections, and German events still need to be adapted for Finland.
+These are the October 1917 starting seats, read from the original game's parliamentary state. Its future election model, German government, and event cards have not yet been adapted to Finland.
 
 - @main: Return to main screen
 
