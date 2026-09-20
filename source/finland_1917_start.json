@@ -1,0 +1,20 @@
+{
+  "scenario": "Birth of a Republic: Finland, December 1917",
+  "historical_election": "1917-10-01/1917-10-02",
+  "parliament_total_seats": 200,
+  "majority_seats": 101,
+  "player_party_id": "sdp",
+  "parties": [
+    { "id": "sdp", "name": "Social Democratic Party of Finland", "name_fi": "Suomen Sosialidemokraattinen Puolue", "seats": 92 },
+    { "id": "ml", "name": "Agrarian League", "name_fi": "Maalaisliitto", "seats": 26 },
+    { "id": "sp", "name": "Finnish Party", "name_fi": "Suomalainen puolue", "seats": 32 },
+    { "id": "nsp", "name": "Young Finnish Party", "name_fi": "Nuorsuomalainen puolue", "seats": 24 },
+    { "id": "kp", "name": "People's Party", "name_fi": "Kansanpuolue", "seats": 5 },
+    { "id": "rkp", "name": "Swedish People's Party of Finland", "name_fi": "Ruotsalainen kansanpuolue", "seats": 21 }
+  ],
+  "sources": [
+    "https://vintti.yle.fi/yle.fi/satavuottaeduskuntavaaleja/vaalitilastot.htm",
+    "https://helda.helsinki.fi/server/api/core/bitstreams/03951cf8-0d0b-4645-861f-7b475bbe0021/content"
+  ],
+  "implementation_note": "Historical source data only. Not loaded by the Dendry game engine automatically. Do not equate these party IDs with the inherited German party IDs; update Root, Status, Library, election calculations, and relevant events together when integrating them."
+}
